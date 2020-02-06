@@ -5,6 +5,11 @@ import unidecode
 import re
 
 
+def chunks(l, n):
+    n = max(1, n)
+    return list(l[i:i+n] for i in range(0, len(l), n))
+
+
 def busca_cep(data_info):
 
     # Getting data
@@ -24,14 +29,17 @@ def busca_cep(data_info):
     # Parsing
     soup = BeautifulSoup(content, features="html.parser")
     content = soup.find_all('table')
+
     if content:
+        data = []
         items = content[0].find_all('td')
-        data = {
-            'address': unidecode.unidecode(re.sub(' - .*', '', items[0].string).strip()),
-            'neighborhood': unidecode.unidecode(items[1].string.strip()),
-            'city/state': unidecode.unidecode(items[2].string.strip()),
-            'zipcode': unidecode.unidecode(items[3].string.strip()),
-        }
+        for info in chunks(items, 4):
+            data.append({
+                'address': unidecode.unidecode(re.sub(' - .*', '', info[0].string).strip()),
+                'neighborhood': unidecode.unidecode(info[1].string.strip()),
+                'city/state': unidecode.unidecode(info[2].string.strip()),
+                'zipcode': unidecode.unidecode(info[3].string.strip()),
+            })
 
     else:
         data = {'error': 'Address not found'}
