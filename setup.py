@@ -12,7 +12,7 @@ requirements = [
 
 setuptools.setup(
     name="Consulta Correios",
-    version="0.0.1",
+    version="0.0.2",
     author="Arthur Fortes",
     author_email="fortes.arthur@gmail.com",
     description="API para consulta de endereços e CEPs  utilizando o site dos Correios",
