@@ -15,7 +15,7 @@ API for querying addresses and zip codes using the Correios website (Brazil post
 
 Consulta Correios can be installed using pip:
 
-    $ pip install consulta_correios
+    $ pip install Consulta-Correios
 
 If you want to run the latest version of the code, you can install from git:
 
