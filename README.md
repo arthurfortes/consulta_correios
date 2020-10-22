@@ -37,7 +37,7 @@ This API allows querying both zip codes and address through the same call. See t
 ```python
 >>> import consulta_correios
 
->>> address = consulta_correios.busca_cep('13073-003')
+>>> address = consulta_correios.busca_cep('13076-001')
 >>> print(address)
 {'address': 'Avenida Julio Prestes', 'neighborhood': 'Taquaral', 'city/state': 'Campinas/SP', 'zipcode': '13076-001'}
 ```
