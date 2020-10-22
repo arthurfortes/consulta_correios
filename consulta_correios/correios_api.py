@@ -35,7 +35,7 @@ def busca_cep(data_info):
         items = content[0].find_all('td')
         for info in chunks(items, 4):
             data.append({
-                'address': unidecode.unidecode(re.sub(' - .*', '', info[0].string).strip()),
+                'address': unidecode.unidecode(re.sub('<.*?>', '', str(info[0])).strip()),
                 'neighborhood': unidecode.unidecode(info[1].string.strip()),
                 'city/state': unidecode.unidecode(info[2].string.strip()),
                 'zipcode': unidecode.unidecode(info[3].string.strip()),
